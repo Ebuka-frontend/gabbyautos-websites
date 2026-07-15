@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabby Autos — Enjoy the Safe and Smooth Ride</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--orange:#FF6A00;--purple:#A855F7;--silver:#C0C0C0;--dark1:#0a0a0a;--dark2:#111111;--dark3:#1a1a1a;--dark4:#222222;--dark5:#2a2a2a}
+*{margin:0;padding:0;box-sizing:border-box;scrollbar-width:thin;scrollbar-color:var(--orange) var(--dark2)}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--dark2)}::-webkit-scrollbar-thumb{background:var(--orange);border-radius:3px}
+body{font-family:'Rajdhani',sans-serif;background:var(--dark1);color:#fff;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;background:repeating-conic-gradient(#fff 0.0001%,transparent 0.0002%) 50% 50%/2500px 2500px;opacity:.012;pointer-events:none;z-index:9999}
+h1,h2,h3,h4,h5,h6,.font-heading{font-family:'Orbitron',sans-serif}
+.grid-bg{background-image:linear-gradient(rgba(255,106,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,106,0,.04) 1px,transparent 1px);background-size:60px 60px}
+.nav-solid{background:rgba(10,10,10,.92)!important;backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,106,0,.15)}
+.nav-link{position:relative;letter-spacing:.15em;font-size:.7rem;text-transform:uppercase}
+.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--orange);transition:width .3s}
+.nav-link:hover::after{width:100%}
+.nav-link:hover{color:var(--orange)}
+.glitch{position:relative;display:inline-block}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
+.glitch::before{color:var(--orange);animation:glitch-1 3s infinite linear alternate-reverse;clip-path:inset(20% 0 60% 0)}
+.glitch::after{color:var(--purple);animation:glitch-2 2s infinite linear alternate-reverse;clip-path:inset(60% 0 10% 0)}
+@keyframes glitch-1{0%{clip-path:inset(20% 0 60% 0);transform:translate(-3px,0)}10%{clip-path:inset(50% 0 20% 0);transform:translate(3px,0)}20%{clip-path:inset(10% 0 70% 0);transform:translate(-2px,0)}30%{clip-path:inset(80% 0 5% 0);transform:translate(2px,0)}40%{clip-path:inset(30% 0 40% 0);transform:translate(-3px,0)}50%{clip-path:inset(60% 0 10% 0);transform:translate(3px,0)}60%{clip-path:inset(5% 0 80% 0);transform:translate(-2px,0)}70%{clip-path:inset(70% 0 15% 0);transform:translate(2px,0)}80%{clip-path:inset(40% 0 30% 0);transform:translate(-3px,0)}90%{clip-path:inset(15% 0 55% 0);transform:translate(3px,0)}100%{clip-path:inset(25% 0 45% 0);transform:translate(-2px,0)}}
+@keyframes glitch-2{0%{clip-path:inset(65% 0 10% 0);transform:translate(3px,0)}15%{clip-path:inset(15% 0 60% 0);transform:translate(-3px,0)}30%{clip-path:inset(75% 0 5% 0);transform:translate(2px,0)}45%{clip-path:inset(5% 0 75% 0);transform:translate(-2px,0)}60%{clip-path:inset(45% 0 30% 0);transform:translate(3px,0)}75%{clip-path:inset(25% 0 50% 0);transform:translate(-3px,0)}90%{clip-path:inset(55% 0 20% 0);transform:translate(2px,0)}100%{clip-path:inset(35% 0 40% 0);transform:translate(-2px,0)}}
+.word-loop{display:inline-block;height:1.2em;overflow:hidden;vertical-align:bottom;position:relative}
+.word-loop-inner{animation:wordSlide 8s infinite}
+.word-loop-inner span{display:block;height:1.2em;line-height:1.2}
+@keyframes wordSlide{0%,16%{transform:translateY(0)}20%,36%{transform:translateY(-1.2em)}40%,56%{transform:translateY(-2.4em)}60%,76%{transform:translateY(-3.6em)}80%,96%{transform:translateY(-4.8em)}100%{transform:translateY(0)}}
+.scan-line{position:relative;overflow:hidden}
+.scan-line::before{content:'';position:absolute;top:-100%;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);animation:scanMove 4s linear infinite;z-index:2;opacity:.6}
+@keyframes scanMove{0%{top:-5%}100%{top:105%}}
+.pulse-dot{width:8px;height:8px;background:var(--orange);border-radius:50%;position:relative}
+.pulse-dot::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--orange);animation:pulseDot 2s ease-out infinite}
+.pulse-dot::before{content:'';position:absolute;inset:-8px;border-radius:50%;border:1px solid var(--orange);animation:pulseDot 2s ease-out infinite .5s;opacity:0}
+@keyframes pulseDot{0%{transform:scale(1);opacity:.8}100%{transform:scale(2.5);opacity:0}}
+.car-card{position:relative;background:var(--dark3);border:1px solid rgba(255,255,255,.05);transition:all .4s ease;overflow:hidden}
+.car-card::before{content:'';position:absolute;inset:0;border:1px solid transparent;transition:border-color .4s;z-index:1;pointer-events:none}
+.car-card:hover{transform:translateY(-4px);border-color:rgba(255,106,0,.3)}
+.car-card:hover::before{border-color:var(--orange);box-shadow:0 0 30px rgba(255,106,0,.1),inset 0 0 30px rgba(255,106,0,.03)}
+.car-card:hover .car-img{transform:scale(1.08);filter:brightness(1.1) contrast(1.1)}
+.car-card:hover .book-btn{background:var(--orange);color:#000;box-shadow:0 0 25px rgba(255,106,0,.4)}
+.car-img{transition:all .6s ease;filter:brightness(.75) contrast(1.2) saturate(.3)}
+.book-btn{transition:all .3s ease;border:1px solid var(--orange);color:var(--orange);background:transparent;cursor:pointer}
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}.reveal-delay-4{transition-delay:.4s}
+.gallery-item{position:relative;overflow:hidden}
+.gallery-item img{transition:all .6s ease;filter:grayscale(100%) contrast(1.2) brightness(.7)}
+.gallery-item:hover img{filter:grayscale(30%) contrast(1.1) brightness(.85);transform:scale(1.05)}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9) 0%,rgba(0,0,0,.2) 50%,transparent 100%);opacity:0;transition:opacity .4s;display:flex;align-items:flex-end;padding:1rem}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.text-gradient-orange{background:linear-gradient(135deg,var(--orange),#ff9a44);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+@keyframes flicker{0%,19.999%,22%,62.999%,64%,64.999%,70%,100%{opacity:1}20%,21.999%,63%,63.999%,65%,69.999%{opacity:.4}}
+.flicker{animation:flicker 4s linear infinite}
+.marquee-track{display:flex;animation:marquee 25s linear infinite;width:max-content}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.mobile-menu{transform:translateX(100%);transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.mobile-menu.open{transform:translateX(0)}
+.price-tag{background:linear-gradient(135deg,rgba(255,106,0,.15),rgba(255,106,0,.05));border-left:2px solid var(--orange)}
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,106,0,.3),rgba(255,106,0,.5),rgba(255,106,0,.3),transparent)}
+
+/* ========== HERO CAR BACKGROUND ========== */
+.hero-car-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero-car-bg video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  object-position:center 35%;
+  filter:brightness(.35) contrast(1.3) saturate(0);
+  transform:scale(1.08);
+}
+/* Left-right gradient: keeps car visible behind nav at top, darkens left for text */
+.hero-car-bg::after{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to right,
+    rgba(10,10,10,.82) 0%,
+    rgba(10,10,10,.55) 28%,
+    rgba(10,10,10,.25) 55%,
+    rgba(10,10,10,.5) 100%
+  );
+}
+/* Top-bottom gradient: keeps top CLEAR so car shows behind nav, darkens bottom */
+.hero-car-bg::before{
+  content:'';position:absolute;inset:0;z-index:2;
+  background:linear-gradient(to bottom,
+    rgba(10,10,10,.08) 0%,
+    rgba(10,10,10,.02) 12%,
+    transparent 30%,
+    transparent 45%,
+    rgba(10,10,10,.5) 75%,
+    rgba(10,10,10,.85) 100%
+  );
+}
+/* Extra nav-area tint so logo is readable but car still shows */
+.nav-hero-tint{
+  position:absolute;top:0;left:0;right:0;height:64px;z-index:3;
+  background:linear-gradient(to bottom,rgba(10,10,10,.45) 0%,transparent 100%);
+  pointer-events:none;
+}
+
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--dark3);border:1px solid var(--orange);color:#fff;padding:1rem 1.5rem;border-radius:4px;z-index:10000;transform:translateY(120%);transition:transform .4s ease;font-family:'Rajdhani',sans-serif;max-width:90vw}
+.toast.show{transform:translateY(0)}
+.time-badge{font-size:9px;letter-spacing:.08em;background:rgba(168,85,247,.15);border:1px solid rgba(168,85,247,.3);color:var(--purple);padding:2px 8px;display:inline-flex;align-items:center;gap:4px}
+</style>
+</head>
+<body class="grid-bg">
+
+<!-- TOAST -->
+<div id="toast" class="toast flex items-center gap-3">
+  <svg class="w-5 h-5 flex-shrink-0" style="color:var(--orange)" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 022.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span id="toast-msg">Redirecting to WhatsApp...</span>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style="background:transparent">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+    <a href="#" class="flex items-center gap-2">
+      <div class="w-8 h-8 flex items-center justify-center" style="border:1px solid var(--orange)">
+        <span class="font-heading text-xs font-bold" style="color:var(--orange)">GA</span>
+      </div>
+      <span class="font-heading text-sm font-bold tracking-widest hidden sm:block">GABBY AUTOS</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#home" class="nav-link" style="color:var(--silver)">Home</a>
+      <a href="#about" class="nav-link" style="color:var(--silver)">About</a>
+      <a href="#gallery" class="nav-link" style="color:var(--silver)">Gallery</a>
+      <a href="#collection" class="nav-link" style="color:var(--silver)">Collection</a>
+      <a href="#contact" class="nav-link" style="color:var(--silver)">Contact</a>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="https://wa.me/2349033851011?text=Hello%20Gabby%20Autos!%20I'm%20interested%20in%20your%20car%20rental%20services%20in%20Enugu." target="_blank" class="hidden sm:flex items-center gap-2 px-4 py-2 text-xs font-heading font-bold tracking-wider transition-all duration-300 hover:shadow-lg" style="background:var(--orange);color:#000">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        BOOK NOW
+      </a>
+      <button id="menuBtn" class="md:hidden p-2" style="color:var(--silver)">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 flex flex-col" style="background:var(--dark1)">
+  <div class="flex items-center justify-between px-4 h-16">
+    <span class="font-heading text-sm font-bold tracking-widest" style="color:var(--orange)">GABBY AUTOS</span>
+    <button id="closeMenu" class="p-2" style="color:var(--silver)"><i data-lucide="x" class="w-5 h-5"></i></button>
+  </div>
+  <div class="flex flex-col items-center justify-center flex-1 gap-8">
+    <a href="#home" class="mobile-link font-heading text-2xl font-bold tracking-widest" style="color:var(--silver)">HOME</a>
+    <a href="#about" class="mobile-link font-heading text-2xl font-bold tracking-widest" style="color:var(--silver)">ABOUT</a>
+    <a href="#gallery" class="mobile-link font-heading text-2xl font-bold tracking-widest" style="color:var(--silver)">GALLERY</a>
+    <a href="#collection" class="mobile-link font-heading text-2xl font-bold tracking-widest" style="color:var(--silver)">COLLECTION</a>
+    <a href="#contact" class="mobile-link font-heading text-2xl font-bold tracking-widest" style="color:var(--silver)">CONTACT</a>
+    <a href="https://wa.me/2349033851011" target="_blank" class="mt-4 px-8 py-3 font-heading text-sm font-bold tracking-wider" style="background:var(--orange);color:#000">BOOK NOW</a>
+  </div>
+</div>
+
+<!-- ==================== HERO ==================== -->
+<section id="home" class="relative min-h-screen flex items-center scan-line overflow-hidden">
+  <!-- Car Background -->
+  <div class="hero-car-bg">
+    <video autoplay loop muted playsinline>
+      <source src="thumbnails/carvideo.mp4" type="video/mp4">
+    </video>
+  </div>
+  <!-- Subtle nav-area tint -->
+  <div class="nav-hero-tint"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full pt-20 pb-12">
+    <div class="max-w-3xl">
+      <div class="flex items-center gap-3 mb-6 reveal">
+        <div class="pulse-dot"></div>
+        <span class="text-xs tracking-[.3em] uppercase font-medium" style="color:var(--orange)">Premium Car Rental — Enugu</span>
+        <div class="h-px flex-1 max-w-[80px]" style="background:var(--orange);opacity:.4"></div>
+      </div>
+      <h1 class="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[.9] mb-6 reveal reveal-delay-1">
+        <span class="glitch block" data-text="GABBY">GABBY</span>
+        <span class="glitch block mt-1" data-text="AUTOS" style="color:var(--orange)">AUTOS</span>
+      </h1>
+      <div class="text-xl sm:text-2xl md:text-3xl font-bold mb-6 reveal reveal-delay-2">
+        <span class="text-white">ENJOY THE </span><span class="text-white">SAFE</span>
+        <span class="text-white"> AND </span><span style="color:var(--purple)">SMOOTH RIDE</span>
+      </div>
+      <div class="flex items-center gap-3 mb-8 reveal reveal-delay-3">
+        <span class="text-sm tracking-[.2em] uppercase" style="color:var(--silver)">WE DELIVER</span>
+        <span class="word-loop" style="color:var(--orange);font-family:'Orbitron',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.1em">
+          <span class="word-loop-inner">
+            <span>LUXURY</span>
+            <span>POWER</span>
+            <span>PRECISION</span>
+            <span>PRESTIGE</span>
+            <span>PERFORMANCE</span>
+          </span>
+        </span>
+      </div>
+      <div class="flex flex-wrap gap-4 reveal reveal-delay-4">
+        <a href="#collection" class="group flex items-center gap-3 px-7 py-3.5 font-heading text-sm font-bold tracking-wider transition-all duration-300 hover:shadow-lg" style="background:var(--orange);color:#000">
+          VIEW COLLECTION <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+        </a>
+        <a href="https://wa.me/2349033851011?text=Hello%20Gabby%20Autos!%20I'd%20like%20to%20inquire%20about%20your%20rental%20services%20in%20Enugu." target="_blank" class="flex items-center gap-3 px-7 py-3.5 font-heading text-sm font-bold tracking-wider transition-all duration-300" style="border:1px solid rgba(255,106,0,.5);color:var(--orange)">
+          <i data-lucide="phone" class="w-4 h-4"></i> CONTACT US
+        </a>
+      </div>
+      <div class="flex flex-wrap gap-8 mt-12 pt-8 reveal" style="border-top:1px solid rgba(255,255,255,.08)">
+        <div>
+          <div class="font-heading text-2xl font-bold" style="color:var(--orange)">16</div>
+          <div class="text-xs tracking-widest uppercase" style="color:var(--silver)">Vehicles</div>
+        </div>
+        <div>
+          <div class="font-heading text-2xl font-bold" style="color:var(--orange)">500+</div>
+          <div class="text-xs tracking-widest uppercase" style="color:var(--silver)">Clients</div>
+        </div>
+        <div>
+          <div class="font-heading text-2xl font-bold" style="color:var(--orange)">7AM–7PM</div>
+          <div class="text-xs tracking-widest uppercase" style="color:var(--silver)">Daily Service</div>
+        </div>
+        <div>
+          <div class="font-heading text-2xl font-bold flicker" style="color:var(--orange)">100%</div>
+          <div class="text-xs tracking-widest uppercase" style="color:var(--silver)">Trusted</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+    <span class="text-[10px] tracking-[.3em] uppercase" style="color:var(--silver)">Scroll</span>
+    <div class="w-px h-8" style="background:linear-gradient(to bottom,var(--orange),transparent);animation:pulseDot 2s ease-out infinite"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="overflow-hidden py-4" style="background:var(--dark2);border-top:1px solid rgba(255,106,0,.1);border-bottom:1px solid rgba(255,106,0,.1)">
+  <div class="marquee-track">
+    <span class="flex items-center gap-8 px-4 text-xs tracking-[.3em] uppercase font-heading font-bold" style="color:rgba(255,106,0,.4)">
+      <span>GABBY AUTOS</span><span style="color:var(--dark5)">✦</span><span>ENUGU NIGERIA</span><span style="color:var(--dark5)">✦</span><span>PREMIUM RENTALS</span><span style="color:var(--dark5)">✦</span><span>LUXURY FLEET</span><span style="color:var(--dark5)">✦</span><span>SAFE & SMOOTH</span><span style="color:var(--dark5)">✦</span><span>7AM – 7PM DAILY</span><span style="color:var(--dark5)">✦</span><span>BOOK VIA WHATSAPP</span><span style="color:var(--dark5)">✦</span>
+    </span>
+    <span class="flex items-center gap-8 px-4 text-xs tracking-[.3em] uppercase font-heading font-bold" style="color:rgba(255,106,0,.4)">
+      <span>GABBY AUTOS</span><span style="color:var(--dark5)">✦</span><span>ENUGU NIGERIA</span><span style="color:var(--dark5)">✦</span><span>PREMIUM RENTALS</span><span style="color:var(--dark5)">✦</span><span>LUXURY FLEET</span><span style="color:var(--dark5)">✦</span><span>SAFE & SMOOTH</span><span style="color:var(--dark5)">✦</span><span>7AM – 7PM DAILY</span><span style="color:var(--dark5)">✦</span><span>BOOK VIA WHATSAPP</span><span style="color:var(--dark5)">✦</span>
+    </span>
+  </div>
+</div>
+
+<!-- ==================== ABOUT ==================== -->
+<section id="about" class="py-16 md:py-20" style="background:var(--dark2)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center gap-4 mb-10 reveal">
+      <span class="font-heading text-xs tracking-[.3em] uppercase" style="color:var(--orange)">01</span>
+      <div class="h-px flex-1" style="background:linear-gradient(90deg,var(--orange),transparent)"></div>
+      <span class="font-heading text-xs tracking-[.3em] uppercase" style="color:var(--silver)">About Us</span>
+    </div>
+    <div class="grid md:grid-cols-5 gap-6">
+      <div class="md:col-span-2 reveal reveal-delay-1">
+        <div class="relative overflow-hidden" style="border:1px solid rgba(255,106,0,.15)">
+          <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&h=800&fit=crop&q=80" alt="About Gabby Autos" class="w-full h-[400px] md:h-[520px] object-cover" style="filter:grayscale(80%) contrast(1.3) brightness(.7)">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,var(--dark2),transparent 60%)"></div>
+          <div class="absolute bottom-4 left-4 right-4">
+            <div class="font-heading text-xs tracking-[.3em] uppercase mb-1" style="color:var(--orange)">Est. 2020</div>
+            <div class="font-heading text-lg font-bold">GABBY AUTOS</div>
+            <div class="text-xs" style="color:var(--silver)">Enugu Town, Nigeria</div>
+          </div>
+          <div class="absolute top-0 right-0 w-16 h-16" style="border-top:2px solid var(--orange);border-right:2px solid var(--orange)"></div>
+        </div>
+      </div>
+      <div class="md:col-span-3 flex flex-col justify-center reveal reveal-delay-2">
+        <h2 class="font-heading text-3xl md:text-4xl font-black leading-tight mb-5">
+          BUILT FROM <span class="text-gradient-orange">PASSION</span>,<br>DRIVEN BY <span class="text-gradient-orange">EXCELLENCE</span>
+        </h2>
+        <div class="space-y-4 text-sm leading-relaxed" style="color:var(--silver)">
+          <p>Gabby Autos was born from a simple yet powerful vision — to redefine the car rental experience in Enugu town. What started as a single vehicle operation has grown into one of the most trusted premium car rental services in Eastern Nigeria.</p>
+          <p>Our founder, Gabriel, recognized a gap in the market: people deserved more than just a car — they deserved an experience. A fleet of meticulously maintained, high-end vehicles paired with a level of customer service that matches the caliber of the machines we offer.</p>
+          <p>Every vehicle in our collection undergoes rigorous inspection, professional detailing, and performance checks before it reaches your hands. We don't just rent cars — we deliver confidence, luxury, and peace of mind with every key turn.</p>
+          <p>From executive sedans for corporate engagements to powerful SUVs and luxury buses for events, Gabby Autos ensures that every ride is <span class="text-white font-semibold">safe</span> and <span style="color:var(--purple);font-weight:600">smooth</span>.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mt-8">
+          <div class="flex items-start gap-3 p-3" style="background:rgba(255,106,0,.05);border-left:2px solid var(--orange)">
+            <i data-lucide="shield-check" class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:var(--orange)"></i>
+            <div>
+              <div class="text-xs font-bold tracking-wider uppercase">Fully Insured</div>
+              <div class="text-xs mt-0.5" style="color:var(--silver)">Comprehensive coverage on all vehicles</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-3" style="background:rgba(255,106,0,.05);border-left:2px solid var(--orange)">
+            <i data-lucide="wrench" class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:var(--orange)"></i>
+            <div>
+              <div class="text-xs font-bold tracking-wider uppercase">Well Maintained</div>
+              <div class="text-xs mt-0.5" style="color:var(--silver)">Regular servicing & inspections</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-3" style="background:rgba(255,106,0,.05);border-left:2px solid var(--orange)">
+            <i data-lucide="clock" class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:var(--orange)"></i>
+            <div>
+              <div class="text-xs font-bold tracking-wider uppercase">7AM – 7PM Daily</div>
+              <div class="text-xs mt-0.5" style="color:var(--silver)">Reliable daily service window</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-3" style="background:rgba(255,106,0,.05);border-left:2px solid var(--orange)">
+            <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:var(--orange)"></i>
+            <div>
+              <div class="text-xs font-bold tracking-wider uppercase">Enugu Based</div>
+              <div class="text-xs mt-0.5" style="color:var(--silver)">Serving Enugu town & environs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== GALLERY ==================== -->
+<section id="gallery" class="py-16 md:py-20" style="background:var(--dark1)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center gap-4 mb-3 reveal">
+      <span class="font-heading text-xs tracking-[.3em] uppercase" style="color:var(--orange)">02</span>
+      <div class="h-px flex-1" style="background:linear-gradient(90deg,var(--orange),transparent)"></div>
+      <span class="font-heading text-xs tracking-[.3em] uppercase" style="color:var(--silver)">Gallery & Credentials</span>
+    </div>
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-10 gap-4">
+      <h2 class="font-heading text-3xl md:text-4xl font-black reveal reveal-delay-1">
+        PROFESSIONAL <span class="text-gradient-orange">STANDARDS</span>
+      </h2>
+      <p class="text-sm max-w-md reveal reveal-delay-2" style="color:var(--silver)">Our fleet, facilities, and certifications — a testament to our commitment to excellence.</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div class="gallery-item col-span-2 row-span-2 reveal">
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&h=800&fit=crop&q=80" alt="Fleet Showcase" class="w-full h-full min-h-[300px] md:min-h-[500px] object-cover">
+        <div class="gallery-overlay">
+          <div>
+            <div class="font-heading text-xs tracking-[.2em] uppercase mb-1" style="color:var(--orange)">Fleet</div>
+            <div class="font-heading text-lg font-bold">Premium Collection</div>
+            <div class="text-xs mt-1" style="color:var(--silver)">16 luxury vehicles ready for dispatch in Enugu</div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1">
+        <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=400&h=400&fit=crop&q=80" alt="Detailing" class="w-full h-full min-h-[140px] md:min-h-[240px] object-cover">
+        <div class="gallery-overlay">
+          <div><div class="font-heading text-[10px] tracking-[.2em] uppercase" style="color:var(--orange)">Detailing</div><div class="font-heading text-sm font-bold">Showroom Prep</div></div>
+        </div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=400&fit=crop&q=80" alt="Certification" class="w-full h-full min-h-[140px] md:min-h-[240px] object-cover">
+        <div class="gallery-overlay">
+          <div><div class="font-heading text-[10px] tracking-[.2em] uppercase" style="color:var(--orange)">Certified</div><div class="font-heading text-sm font-bold">Licensed Operation</div></div>
+        </div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-3">
+        <img src="https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=400&h=400&fit=crop&q=80" alt="Engine" class="w-full h-full min-h-[140px] md:min-h-[240px] object-cover">
+        <div class="gallery-overlay">
+          <div><div class="font-heading text-[10px] tracking-[.2em] uppercase" style="color:var(--orange)">Performance</div><div class="font-heading text-sm font-bold">Engine Certified</div></div>
+        </div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-4">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=400&fit=crop&q=80" alt="Interior" class="w-full h-full min-h-[140px] md:min-h-[240px] object-cover">
+        <div class="gallery-overlay">
+          <div><div class="font-heading text-[10px] tracking-[.2em] uppercase" style="color:var(--orange)">Interior</div><div class="font-heading text-sm font-bold">Premium Finish</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6 reveal">
+      <div class="flex items-center gap-3 p-4" style="background:var(--dark3);border:1px solid rgba(255,255,255,.05)">
+        <i data-lucide="award" class="w-5 h-5 flex-shrink-0" style="color:var(--orange)"></i>
+        <div><div class="text-xs font-bold tracking-wider uppercase">Certified Fleet</div><div class="text-[10px]" style="color:var(--silver)">All vehicles inspected</div></div>
+      </div>
+      <div class="flex items-center gap-3 p-4" style="background:var(--dark3);border:1px solid rgba(255,255,255,.05)">
+        <i data-lucide="file-check" class="w-5 h-5 flex-shrink-0" style="color:var(--orange)"></i>
+        <div><div class="text-xs font-bold tracking-wider uppercase">Licensed & Registered</div><div class="text-[10px]" style="color:var(--silver)">Govt. approved</div></div>
+      </div>
+      <div class="flex items-center gap-3 p-4" style="background:var(--dark3);border:1px solid rgba(255,255,255,.05)">
+        <i data-lucide="shield" class="w-5 h-5 flex-shrink-0" style="color:var(--orange)"></i>
+        <div><div class="text-xs font-bold tracking-wider uppercase">Fully Insured</div><div class="text-[10px]" style="color:var(--silver)">Comprehensive cover</div></div>
+      </div>
+      <div class="flex items-center gap-3 p-4" style="background:var(--dark3);border:1px solid rgba(255,255,255,.05)">
+        <i data-lucide="star" class="w-5 h-5 flex-shrink-0" style="color:var(--orange)"></i>
+        <div><div class="text-xs font-bold tracking-wider uppercase">5-Star Reviews</div><div class="text-[10px]" style="color:var(--silver)">Trusted by hundreds</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== COLLECTION ==================== -->
+<section id="collection" class="py-16 md:py-20" style="background:var(--dark2)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center gap-4 mb-3 reveal">
+      <span class="font-heading text-xs tracking-[.3em] uppercase" style="color:var(--orange)">03</span>
+      <div class="h-px flex-1" style="background:linear-gradient(90deg,var(--orange),transparent)"></div>
+      <span class="font-heading text-xs tracking-[.3em] uppercase" style="color:var(--silver)">Our Fleet</span>
+    </div>
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-4 gap-4">
+      <h2 class="font-heading text-3xl md:text-4xl font-black reveal reveal-delay-1">
+        THE <span class="text-gradient-orange">COLLECTION</span>
+      </h2>
+      <p class="text-sm max-w-md reveal reveal-delay-2" style="color:var(--silver)">16 premium vehicles. Tap any car to book instantly via WhatsApp.</p>
+    </div>
+    <div class="flex items-center gap-3 mb-10 reveal reveal-delay-2">
+      <i data-lucide="info" class="w-3.5 h-3.5" style="color:var(--purple)"></i>
+      <span class="text-xs" style="color:var(--silver)">All rentals are <span class="font-bold" style="color:var(--purple)">7:00 AM – 7:00 PM</span> daily. Prices are per rental period.</span>
+    </div>
+    <div id="carGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+  </div>
+</section>
+
+<!-- ==================== CONTACT ==================== -->
+<section id="contact" class="py-16 md:py-20 relative overflow-hidden" style="background:var(--dark1)">
+  <div class="absolute top-0 right-0 w-1/2 h-full opacity-5">
+    <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1000&h=800&fit=crop&q=80" alt="" class="w-full h-full object-cover" style="filter:grayscale(100%)">
+  </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+    <div class="flex items-center gap-4 mb-3 reveal">
+      <span class="font-heading text-xs tracking-[.3em] uppercase" style="color:var(--orange)">04</span>
+      <div class="h-px flex-1" style="background:linear-gradient(90deg,var(--orange),transparent)"></div>
+      <span class="font-heading text-xs tracking-[.3em] uppercase" style="color:var(--silver)">Get In Touch</span>
+    </div>
+    <h2 class="font-heading text-3xl md:text-4xl font-black mb-10 reveal reveal-delay-1">
+      READY FOR YOUR <span class="text-gradient-orange">NEXT RIDE</span>?
+    </h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="space-y-5 reveal reveal-delay-2">
+        <div class="flex items-start gap-4 p-5" style="background:var(--dark3);border:1px solid rgba(255,106,0,.15)">
+          <div class="w-10 h-10 flex items-center justify-center flex-shrink-0" style="background:rgba(255,106,0,.1);border:1px solid rgba(255,106,0,.3)">
+            <i data-lucide="phone" class="w-4 h-4" style="color:var(--orange)"></i>
+          </div>
+          <div>
+            <div class="text-[10px] tracking-[.2em] uppercase mb-1" style="color:var(--silver)">Phone / WhatsApp</div>
+            <a href="tel:09033851011" class="font-heading text-lg font-bold hover:underline" style="color:var(--orange)">09033851011</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 p-5" style="background:var(--dark3);border:1px solid rgba(255,106,0,.15)">
+          <div class="w-10 h-10 flex items-center justify-center flex-shrink-0" style="background:rgba(255,106,0,.1);border:1px solid rgba(255,106,0,.3)">
+            <i data-lucide="mail" class="w-4 h-4" style="color:var(--orange)"></i>
+          </div>
+          <div>
+            <div class="text-[10px] tracking-[.2em] uppercase mb-1" style="color:var(--silver)">Email</div>
+            <a href="mailto:Gabrielgabbyautos@gmail.com" class="font-heading text-sm font-bold hover:underline break-all" style="color:var(--orange)">Gabrielgabbyautos@gmail.com</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 p-5" style="background:var(--dark3);border:1px solid rgba(255,106,0,.15)">
+          <div class="w-10 h-10 flex items-center justify-center flex-shrink-0" style="background:rgba(255,106,0,.1);border:1px solid rgba(255,106,0,.3)">
+            <i data-lucide="map-pin" class="w-4 h-4" style="color:var(--orange)"></i>
+          </div>
+          <div>
+            <div class="text-[10px] tracking-[.2em] uppercase mb-1" style="color:var(--silver)">Location</div>
+            <div class="text-sm font-bold text-white">Enugu Town, Nigeria</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 p-5" style="background:var(--dark3);border:1px solid rgba(255,106,0,.15)">
+          <div class="w-10 h-10 flex items-center justify-center flex-shrink-0" style="background:rgba(255,106,0,.1);border:1px solid rgba(255,106,0,.3)">
+            <i data-lucide="clock" class="w-4 h-4" style="color:var(--orange)"></i>
+          </div>
+          <div>
+            <div class="text-[10px] tracking-[.2em] uppercase mb-1" style="color:var(--silver)">Operating Hours</div>
+            <div class="text-sm font-bold text-white">7:00 AM – 7:00 PM</div>
+            <div class="text-xs" style="color:var(--silver)">Every day (Monday – Sunday)</div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col justify-center reveal reveal-delay-3">
+        <div class="p-8 md:p-10 relative" style="background:var(--dark3);border:1px solid rgba(255,106,0,.2)">
+          <div class="absolute top-0 left-0 w-8 h-8" style="border-top:2px solid var(--orange);border-left:2px solid var(--orange)"></div>
+          <div class="absolute bottom-0 right-0 w-8 h-8" style="border-bottom:2px solid var(--orange);border-right:2px solid var(--orange)"></div>
+          <div class="font-heading text-xs tracking-[.3em] uppercase mb-4" style="color:var(--orange)">Book Your Ride</div>
+          <h3 class="font-heading text-2xl font-black mb-4">START YOUR <span class="text-gradient-orange">JOURNEY</span></h3>
+          <p class="text-sm mb-6" style="color:var(--silver)">Choose your vehicle from our collection above, click "Book Now", and you'll be connected directly to us on WhatsApp. It's that simple.</p>
+          <a href="https://wa.me/2349033851011?text=Hello%20Gabby%20Autos!%20I'm%20interested%20in%20renting%20a%20vehicle%20in%20Enugu.%20Please%20share%20your%20available%20fleet%20and%20pricing." target="_blank" class="flex items-center justify-center gap-3 w-full py-4 font-heading text-sm font-bold tracking-wider transition-all duration-300 hover:shadow-lg" style="background:var(--orange);color:#000">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            CHAT ON WHATSAPP
+          </a>
+          <div class="flex items-center justify-center gap-2 mt-4">
+            <div class="w-2 h-2 rounded-full" style="background:var(--orange);animation:pulseDot 2s ease-out infinite"></div>
+            <span class="text-xs" style="color:var(--silver)">Typically replies within minutes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer style="background:var(--dark2);border-top:1px solid rgba(255,106,0,.15)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 flex items-center justify-center" style="border:1px solid var(--orange)">
+            <span class="font-heading text-sm font-bold" style="color:var(--orange)">GA</span>
+          </div>
+          <div>
+            <div class="font-heading text-lg font-black tracking-wider">GABBY AUTOS</div>
+            <div class="text-[10px] tracking-[.3em] uppercase" style="color:var(--silver)">Premium Car Rental</div>
+          </div>
+        </div>
+        <p class="text-sm max-w-sm mb-2" style="color:var(--silver)">Enjoy the <span class="text-white font-semibold">safe</span> and <span style="color:var(--purple);font-weight:600">smooth ride</span>. Your trusted partner for luxury car rentals in Enugu town, Nigeria.</p>
+        <p class="text-xs mb-4" style="color:rgba(192,192,192,.5)">Rental Hours: 7:00 AM – 7:00 PM Daily</p>
+        <p class="text-xs" style="color:rgba(192,192,192,.4)">© 2025 Gabby Autos. All rights reserved.</p>
+      </div>
+      <div>
+        <div class="font-heading text-xs tracking-[.2em] uppercase mb-4" style="color:var(--orange)">Quick Links</div>
+        <div class="space-y-2">
+          <a href="#home" class="block text-sm transition-colors hover:text-white" style="color:var(--silver)">Home</a>
+          <a href="#about" class="block text-sm transition-colors hover:text-white" style="color:var(--silver)">About Us</a>
+          <a href="#gallery" class="block text-sm transition-colors hover:text-white" style="color:var(--silver)">Gallery</a>
+          <a href="#collection" class="block text-sm transition-colors hover:text-white" style="color:var(--silver)">Collection</a>
+          <a href="#contact" class="block text-sm transition-colors hover:text-white" style="color:var(--silver)">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="font-heading text-xs tracking-[.2em] uppercase mb-4" style="color:var(--orange)">Contact</div>
+        <div class="space-y-3">
+          <a href="tel:09033851011" class="flex items-center gap-2 text-sm transition-colors hover:text-white" style="color:var(--silver)">
+            <i data-lucide="phone" class="w-3.5 h-3.5" style="color:var(--orange)"></i> 09033851011
+          </a>
+          <a href="mailto:Gabrielgabbyautos@gmail.com" class="flex items-center gap-2 text-sm transition-colors hover:text-white break-all" style="color:var(--silver)">
+            <i data-lucide="mail" class="w-3.5 h-3.5" style="color:var(--orange)"></i> Gabrielgabbyautos@gmail.com
+          </a>
+          <a href="https://wa.me/2349033851011" target="_blank" class="flex items-center gap-2 text-sm transition-colors hover:text-white" style="color:var(--silver)">
+            <svg class="w-3.5 h-3.5" style="color:var(--orange)" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+          <div class="flex items-center gap-2 text-sm" style="color:var(--silver)">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5" style="color:var(--orange)"></i> Enugu Town, Nigeria
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-divider mb-6"></div>
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="font-heading text-xs tracking-[.2em]" style="color:rgba(192,192,192,.4)">GABBY AUTOS — ENUGU TOWN, NIGERIA</div>
+      <div class="font-heading text-xs tracking-[.2em]" style="color:rgba(192,192,192,.4)">ENJOY THE SAFE AND SMOOTH RIDE</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+var cars = [
+  { name: "AMG Coup",          price: "₦550,000",  time: "7AM – 7PM", image: "thumbnails/AMG COUP.jpg", seed: "amgcoupblk" },
+  { name: "GLC",               price: "₦450,000",  time: "7AM – 7PM", image: "thumbnails/GLC.png", seed: "mercedesglc" },
+  { name: "E 350",             price: "₦170,000",  time: "7AM – 7PM", image: "thumbnails/E350.png", seed: "benze350new" },
+  { name: "Land Cruiser",      price: "₦280,000",  time: "7AM – 7PM", image: "thumbnails/landcruiser.jpg", seed: "landcruiserng" },
+  { name: "Hilux (Invisible)", price: "₦170,000",  time: "7AM – 7PM", image: "thumbnails/hilux(invinsible).avif", seed: "hiluxinvis" },
+  { name: "Hilux",             price: "₦150,000",  time: "7AM – 7PM", image: "thumbnails/hilux.webp", seed: "toyotahilux" },
+  { name: "Hummer Bus",        price: "₦160,000",  time: "7AM – 7PM", image: "thumbnails/hummerbus.webp", seed: "hummerbusng" },
+  { name: "RX 350",            price: "₦220,000",  time: "7AM – 7PM", image: "thumbnails/Rx350.jpg", seed: "lexusrx350ng" },
+  { name: "Land Cruiser Bulletproof", price: "₦750,000", time: "7AM – 7PM", image: "thumbnails/landcruiser(bulletproof).jpg", seed: "lcruiserbullet" },
+  { name: "GAC Trumpchi M8 Master Edition", price: "₦1,200,000", time: "7AM – 7PM", image: "thumbnails/GAC-Trumpchi-M8 master edition.jpg", seed: "gactrumpchi" },
+  { name: "G-Wagon",           price: "₦700,000",  time: "7AM – 7PM", image: "thumbnails/g-wagon.jpg", seed: "gwagonng" },
+  { name: "Prado",             price: "₦160,000",  time: "7AM – 7PM", image: "thumbnails/Prado.jpg", seed: "toyotapradong" },
+  { name: "GX 460",            price: "₦220,000",  time: "7AM – 7PM", image: "thumbnails/Gx450.jpg", seed: "lexusgx460" },
+  { name: "Land Cruiser",      price: "₦280,000",  time: "7AM – 7PM", image: "thumbnails/Landcruiser2.jpg", seed: "lcruiserv8ng" },
+  { name: "Toyota Camry Spider", price: "₦100,000", time: "7AM – 7PM", image: "thumbnails/toyotacamryspider.jpg", seed: "camryspider" },
+  { name: "LX 570",            price: "₦280,000",  time: "7AM – 7PM", image: "thumbnails/Lx570.jpg", seed: "lexuslx570" }
+];
+
+var carGrid = document.getElementById('carGrid');
+cars.forEach(function(car, i) {
+  var card = document.createElement('div');
+  card.className = 'car-card reveal reveal-delay-' + Math.min((i % 4) + 1, 4);
+  var isPremium = car.name.indexOf('Bulletproof') !== -1 || car.name.indexOf('Trumpchi') !== -1 || car.name.indexOf('G-Wagon') !== -1 || car.name.indexOf('AMG') !== -1;
+  card.style.cssText = isPremium ? 'border:1px solid rgba(255,106,0,.25)' : 'border:1px solid rgba(255,255,255,.05)';
+  var badge = isPremium ? '<div class="absolute top-3 right-3 z-10"><span class="font-heading text-[8px] tracking-[.15em] uppercase px-2 py-0.5" style="background:var(--orange);color:#000;font-weight:700">PREMIUM</span></div>' : '';
+  card.innerHTML = '<div class="relative overflow-hidden" style="height:180px"><img src="' + car.image + '" alt="' + car.name + '" class="car-img w-full h-full object-cover"><div class="absolute inset-0" style="background:linear-gradient(to top,var(--dark3) 0%,transparent 60%)"></div><div class="absolute top-3 left-3 z-10"><span class="font-heading text-[9px] tracking-[.2em] uppercase px-2 py-1" style="background:rgba(0,0,0,.7);border:1px solid rgba(255,106,0,.3);color:var(--orange)">0' + (i + 1) + '</span></div>' + badge + '</div><div class="p-4 relative z-10"><h3 class="font-heading text-sm font-bold tracking-wider mb-2 leading-tight" style="' + (car.name.length > 22 ? 'font-size:11px' : '') + '">' + car.name.toUpperCase() + '</h3><div class="flex items-center gap-2 mb-3"><span class="time-badge"><svg class="w-2.5 h-2.5" style="color:var(--purple)" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>' + car.time + '</span></div><div class="price-tag px-3 py-2 mb-4 flex items-baseline gap-1"><span class="font-heading text-xl font-black" style="color:var(--orange)">' + car.price + '</span><span class="text-[10px] font-medium" style="color:var(--silver)">/ rental</span></div><button onclick="bookCar(\'' + car.name.replace(/'/g, "\\'") + '\', \'' + car.price + '\', \'' + car.time + '\')" class="book-btn w-full py-2.5 font-heading text-xs font-bold tracking-wider flex items-center justify-center gap-2"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>BOOK NOW</button></div>';
+  carGrid.appendChild(card);
+});
+
+function bookCar(name, price, time) {
+  var message = 'Hello Gabby Autos! 👋\n\nI\'m interested in renting the *' + name + '* at *' + price + '* per rental (' + time + ').\n\nPlease confirm availability and share booking details.\n\nThank you!';
+  var url = 'https://wa.me/2349033851011?text=' + encodeURIComponent(message);
+  var toast = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = 'Opening WhatsApp for ' + name + '...';
+  toast.classList.add('show');
+  setTimeout(function() { window.open(url, '_blank'); }, 600);
+  setTimeout(function() { toast.classList.remove('show'); }, 3000);
+}
+
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+var navbar = document.getElementById('navbar');
+window.addEventListener('scroll', function() {
+  navbar.classList.toggle('nav-solid', window.scrollY > 80);
+});
+
+document.getElementById('menuBtn').addEventListener('click', function() { document.getElementById('mobileMenu').classList.add('open'); });
+document.getElementById('closeMenu').addEventListener('click', function() { document.getElementById('mobileMenu').classList.remove('open'); });
+document.querySelectorAll('.mobile-link').forEach(function(link) {
+  link.addEventListener('click', function() { document.getElementById('mobileMenu').classList.remove('open'); });
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+lucide.createIcons();
+setTimeout(function() {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) { observer.observe(el); });
+}, 100);
+</script>
+</body>
+</html>
